@@ -12,7 +12,7 @@ Normally, I do not redistribute any ripped resources (including in-game texts, i
 
 - `ServantDB-Parts.txt` and `ServantDB-Localize.txt` can be obtained from the installation apk file in `assets/bin/Data/data.unity3d` (open apk as zip file), any unity resource extraction tool (like AssetStudio) can extract them.
 - The `Head`, `Body` and `Background` (a.k.a. `Land`) images are obtained from `/sdcard/Android/data/com.aniplex.ffobokutoanatanounitesensou/files/Patch/AssetBundles/Combi` after launching the app and downloading the resources (not sure it can be downloaded now since the service is terminated). Use the above tool to extract them. The file name before extraction should like `svh001.abd`, `svb001.abd`, and `svl001.abd`. After extraction it will be `sv001_head_back.png`, `sv001_body_front.png`, `bg_001.png`.
-- The `Icon` images are obtained from `/sdcard/Android/data/com.aniplex.ffobokutoanatanounitesensou/files/Patch/AssetBundles/servanticonatlas.abd`, same as above. The extracted file name should like `icon_servant_001.png`.
+- The `Icon` images are obtained from `/sdcard/Android/data/com.aniplex.ffobokutoanatanounitesensou/files/Patch/AssetBundles/Atlas/servanticonatlas.abd`, same as above. The extracted file name should like `icon_servant_001.png`.
 
 After extracting all resources, put it into the following place:
 
