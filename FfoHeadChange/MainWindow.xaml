@@ -1,0 +1,123 @@
+﻿<Window x:Class="FfoHeadChange.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FfoHeadChange"
+        mc:Ignorable="d"
+        Title="Fate/FO Unofficial Head Change" Height="800" Width="800">
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Panel.ZIndex="2" Grid.ColumnSpan="2" Visibility="Hidden" x:Name="iconSelectorPanel">
+            <local:IconSelector Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=Grid, Mode=FindAncestor}}" 
+                                Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorType=Grid, Mode=FindAncestor}}"
+                                Visibility="{Binding Path=Visibility, RelativeSource={RelativeSource AncestorType=Grid, Mode=FindAncestor}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                OnServantIconClicked="IconSelector_OnServantIconClicked">
+            </local:IconSelector>
+        </Grid>
+        
+        <GroupBox Header="Options" Padding="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="135" />
+                    <RowDefinition Height="135" />
+                    <RowDefinition Height="135" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Rectangle Stroke="Gray"></Rectangle>
+                <Grid Margin="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="105" />
+                    </Grid.RowDefinitions>
+                    <Label VerticalAlignment="Center">Head:</Label>
+                    <Button Grid.Column="1" Padding="5" x:Name="selectHead" VerticalAlignment="Center" Click="SelectHead_Click">SELECT</Button>
+                    <Button Grid.Column="2" Padding="5" x:Name="clearHead" VerticalAlignment="Center" Click="ClearHead_Click">CLEAR</Button>
+                    <Image Grid.ColumnSpan="3" Grid.Row="1" x:Name="headSelectedIcon" Width="100" Height="100"></Image>
+                </Grid>
+
+                <Rectangle Stroke="Gray" Grid.Row="1"></Rectangle>
+                <Grid Margin="3" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="105" />
+                    </Grid.RowDefinitions>
+                    <Label VerticalAlignment="Center">Body:</Label>
+                    <Button Grid.Column="1" Padding="5" x:Name="selectBody" VerticalAlignment="Center" Click="SelectBody_Click">SELECT</Button>
+                    <Button Grid.Column="2" Padding="5" x:Name="clearBody" VerticalAlignment="Center" Click="ClearBody_Click">CLEAR</Button>
+                    <Image Grid.ColumnSpan="3" Grid.Row="1" x:Name="bodySelectedIcon" Width="100" Height="100"></Image>
+                </Grid>
+
+                <Rectangle Stroke="Gray" Grid.Row="2"></Rectangle>
+                <Grid Margin="3" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="105" />
+                    </Grid.RowDefinitions>
+                    <Label VerticalAlignment="Center">Background:</Label>
+                    <Button Grid.Column="1" Padding="5" x:Name="selectBackground" VerticalAlignment="Center" Click="SelectBackground_Click">SELECT</Button>
+                    <Button Grid.Column="2" Padding="5" x:Name="clearBackground" VerticalAlignment="Center" Click="ClearBackground_Click">CLEAR</Button>
+                    <Image Grid.ColumnSpan="3" Grid.Row="1" x:Name="backgroundSelectedIcon" Width="100" Height="100"></Image>
+                </Grid>
+
+                <StackPanel Grid.Row="3">
+                    <Label>
+                        <TextBlock TextWrapping="WrapWithOverflow">Servant Name:</TextBlock>
+                    </Label>
+                    <Label>
+                        <TextBlock x:Name="servantName" TextWrapping="WrapWithOverflow" />
+                    </Label>
+                    <Rectangle Height="20" />
+                    <Label>
+                        <TextBlock TextWrapping="WrapWithOverflow">Servant Description:</TextBlock>
+                    </Label>
+                    <Label>
+                        <TextBlock x:Name="servantInfo" TextWrapping="WrapWithOverflow" />
+                    </Label>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <Grid x:Name="main" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label>
+                <TextBlock>
+                    <Run>Status: </Run>
+                    <Run x:Name="statusOutput" />
+                </TextBlock>
+            </Label>
+            <Grid x:Name="output" Grid.Row="1" ClipToBounds="True">
+                <Label Panel.ZIndex="5">
+                    <TextBlock Background="#40ffffff">(C) TYPE-MOON / FGO Project</TextBlock>
+                </Label>
+                <Canvas x:Name="imageFusionOutput" Panel.ZIndex="1" Width="512" Height="720" HorizontalAlignment="Center" VerticalAlignment="Center">
+                </Canvas>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
